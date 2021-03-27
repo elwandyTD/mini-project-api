@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PelangganController;
 use Illuminate\Http\Request;
@@ -28,3 +29,5 @@ Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']);
 Route::post('/signup', [PelangganController::class, 'signup']);
 Route::post('/signin', [PelangganController::class, 'signin']);
 Route::delete('/signout', [PelangganController::class, 'signout']);
+
+Route::post('/item', [BarangController::class, 'store']);
