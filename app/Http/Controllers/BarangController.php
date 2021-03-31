@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class BarangController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $barang = Barang::orderBy('kode', 'desc')->get();
+        // $barang = Barang::orderBy('kode', 'desc')->get();
+        $barang = DB::table('barang')->join('kategori', 'barang.kategori', '=', 'kategori.kode_kategori')->orderBy('barang.created_at', 'desc')->get();
 
         return response()->json([
             'success' => true,

@@ -132,4 +132,31 @@ class PenjualanController extends Controller
             ]);
         }
     }
+
+    public function destroy($id)
+    {
+        try {
+            $penjualan = Penjualan::find($id);
+
+            if (!$penjualan) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Transaction not found',
+                ], Response::HTTP_NOT_FOUND);
+            }
+
+            $penjualan->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Success delete transaction',
+            ], Response::HTTP_OK);
+        } catch (QueryException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Get akun gagal',
+                'error' => $e->errorInfo
+            ]);
+        }
+    }
 }

@@ -22,10 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/kategori', [KategoriController::class, 'index']);
-Route::post('/kategori', [KategoriController::class, 'store']);
-Route::put('/kategori/{id}', [KategoriController::class, 'update']);
-Route::delete('/kategori/{id}', [KategoriController::class, 'destroy']);
+Route::get('/category', [KategoriController::class, 'index']);
+Route::post('/category', [KategoriController::class, 'store']);
+Route::put('/category/{id}', [KategoriController::class, 'update']);
+Route::delete('/category/{id}', [KategoriController::class, 'destroy']);
 
 Route::get('customer/{email}', [PelangganController::class, 'profile']);
 Route::patch('customer/username/{id}', [PelangganController::class, 'update_username']);
@@ -45,3 +45,4 @@ Route::get('/transaction', [PenjualanController::class, 'index']);
 Route::get('/transaction/user/{id}', [PenjualanController::class, 'user']);
 Route::get('/transaction/detail/{id}', [PenjualanController::class, 'detail']);
 Route::post('/transaction', [PenjualanController::class, 'store']);
+Route::delete('/transaction/{id}', [PenjualanController::class, 'destroy']);
