@@ -30,4 +30,7 @@ Route::post('/signup', [PelangganController::class, 'signup']);
 Route::post('/signin', [PelangganController::class, 'signin']);
 Route::delete('/signout', [PelangganController::class, 'signout']);
 
+Route::get('/item', [BarangController::class, 'index']);
 Route::post('/item', [BarangController::class, 'store']);
+Route::patch('/item/{id}', [BarangController::class, 'update']);
+Route::delete('/item/{id}', [BarangController::class, 'destroy']);
